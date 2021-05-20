@@ -10,6 +10,7 @@ import os
 from typing import Any, Dict, List, Optional
 
 import boto3
+from fbpcs.decorator.error_handler import error_handler
 from tqdm.auto import tqdm
 
 
@@ -38,7 +39,8 @@ class S3Gateway:
         self.client.create_bucket(
             Bucket=bucket, CreateBucketConfiguration={"LocationConstraint": region}
         )
-
+    
+    @error_handler
     def delete_bucket(self, bucket: str) -> None:
         self.client.delete_bucket(Bucket=bucket)
 
