@@ -19,13 +19,13 @@
       "site-package": "fbpcs"
     },
     {
-      "site-package": "psutil"
+      "site-package": "docopt"
     },
     {
       "site-package": "schema"
     },
     {
-      "site-package": "docopt"
+      "site-package": "psutil"
     },
     {
       "site-package": "setuptools"
