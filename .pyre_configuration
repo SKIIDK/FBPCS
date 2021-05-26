@@ -35,6 +35,7 @@
     }
   ],
   "source_directories": [
+    ".",
     "fbpcs"
   ],
   "version": "0.0.101612872667"
