@@ -33,7 +33,7 @@
   ],
   "source_directories": [
     ".",
-    “fbpcs”
+    "fbpcs"
   ],
   "version": "0.0.101612872667"
 }
