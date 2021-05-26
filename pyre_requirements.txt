@@ -1,5 +1,4 @@
-wheel ~= 0.33.6
-docopt ~= 0.6
-schema ~= 0.7
-psutil ~= 5.8
-setuptools ~= 51.0
+docopt
+schema
+psutil
+setuptools
