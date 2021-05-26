@@ -16,7 +16,7 @@
       "site-package": "pyyaml"
     },
     {
-      "site-package": "docpot"
+      "site-package": "docopt"
     },
     {
       "site-package": "schema"
