@@ -16,16 +16,16 @@
       "site-package": "pyyaml"
     },
     {
-      "site-package": "schema"
-    },
-    {
-      "site-package": "docopt"
+      "site-package": "fbpcs"
     },
     {
       "site-package": "psutil"
     },
     {
-      "site-package": "fbpcs"
+      "site-package": "schema"
+    },
+    {
+      "site-package": "docopt"
     },
     {
       "site-package": "setuptools"
