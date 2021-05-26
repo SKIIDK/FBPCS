@@ -22,10 +22,10 @@
       "site-package": "psutil"
     },
     {
-      "dist-package": "schema"
+      "site-package": "schema"
     },
     {
-      "dist-package": "docopt"
+      "site-package": "docopt"
     },
     {
       "site-package": "setuptools"
