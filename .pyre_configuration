@@ -20,7 +20,7 @@
     },
     {
       "site-package": "setuptools"
-    },
+    }
   ],
   "source_directories": [
     "fbpcs"
