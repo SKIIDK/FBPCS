@@ -16,20 +16,14 @@
       "site-package": "pyyaml"
     },
     {
-      "site-package": "psutil"
-    },
-    {
-      "site-package": "docopt"
-    },
-    {
-      "site-package": "schema"
-    },
-    {
       "site-package": "fbpcs"
-    }
+    },
+    {
+      "site-package": "setuptools"
+    },
   ],
   "source_directories": [
-    "."
+    "fbpcs"
   ],
   "version": "0.0.101612872667"
 }
