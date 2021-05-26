@@ -14,7 +14,7 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install .
-          python3 -m pip install -r pyre_requirements.txt
+          python3 -m pip install -r - pyre_requirements.txt
           VERSION=$(grep "version" .pyre_configuration | sed -n -e 's/.*\(0\.0\.[0-9]*\).*/\1/p')
           python3 -m pip install pyre-check-nightly==$VERSION
       - name: Run Pyre
