@@ -18,6 +18,7 @@ jobs:
           VERSION=$(grep "version" .pyre_configuration | sed -n -e 's/.*\(0\.0\.[0-9]*\).*/\1/p')
           python3 -m pip install pyre-check-nightly==$VERSION
           python3 -m pip show docopt
+          python3 -m pip show schema
           python3 -m pip show psutil
       - name: Run Pyre
         run: |
