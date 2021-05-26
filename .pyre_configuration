@@ -35,8 +35,7 @@
     }
   ],
   "source_directories": [
-    "onedocker",
-    "fbpcs"
+    "onedocker"
   ],
   "version": "0.0.101612872667"
 }
