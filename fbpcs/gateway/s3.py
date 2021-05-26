@@ -10,6 +10,7 @@ import os
 from typing import Any, Dict, List, Optional
 
 import boto3
+from docopt import docopt
 from fbpcs.decorator.error_handler import error_handler
 from tqdm.auto import tqdm
 
