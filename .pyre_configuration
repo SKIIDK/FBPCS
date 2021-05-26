@@ -1,7 +1,4 @@
 {
-  "ignore_all_errors": [
-    "onedocker/onedocker_runner.py"
-  ],  
   "search_path": [
     {
       "site-package": "dataclasses_json"
