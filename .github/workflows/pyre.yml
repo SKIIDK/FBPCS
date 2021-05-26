@@ -12,14 +12,14 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install .
+          python -m pip install --upgrade pip
+          python -m pip install .
           python -m pip install -r pyre_requirements.txt
           VERSION=$(grep "version" .pyre_configuration | sed -n -e 's/.*\(0\.0\.[0-9]*\).*/\1/p')
-          python3 -m pip install pyre-check-nightly==$VERSION
-          python3 -m pip show docopt
-          python3 -m pip show schema
-          python3 -m pip show psutil
+          python -m pip install pyre-check-nightly==$VERSION
+          python -m pip show docopt
+          python -m pip show schema
+          python -m pip show psutil
       - name: Run Pyre
         run: |
           pyre check
