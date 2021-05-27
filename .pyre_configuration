@@ -28,6 +28,9 @@
       "site-package": "psutil"
     },
     {
+      "site-package": "easydict"
+    },
+    {
       "site-package": "setuptools"
     }
   ],
