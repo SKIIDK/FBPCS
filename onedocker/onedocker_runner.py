@@ -26,11 +26,11 @@ import sys
 from pathlib import Path
 from typing import Tuple, Any, Optional
 
+from fbpcs.service.storage_s3 import S3StorageService
+from fbpcs.util.s3path import S3Path
 import psutil
 import schema
 from docopt import docopt
-from fbpcs.service.storage_s3 import S3StorageService
-from fbpcs.util.s3path import S3Path
 
 from .env import ONEDOCKER_EXE_PATH, ONEDOCKER_REPOSITORY_PATH
 
