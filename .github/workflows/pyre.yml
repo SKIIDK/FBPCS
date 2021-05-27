@@ -20,6 +20,7 @@ jobs:
           python -m pip show docopt
           python -m pip show schema
           python -m pip show psutil
+          python -m pip show fbpcs dataclasses_json botocore boto3  
       - name: Run Pyre
         run: |
           pyre check
