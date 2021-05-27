@@ -1,4 +1,2 @@
-docopt ~= 0.6.2
-schema ~= 0.7
 psutil ~= 5.8
 setuptools ~= 51.0
