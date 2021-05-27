@@ -27,6 +27,8 @@ from pathlib import Path
 from typing import Tuple, Any, Optional
 
 import psutil
+import schema
+from docopt import docopt
 from fbpcs.service.storage_s3 import S3StorageService
 from fbpcs.util.s3path import S3Path
 
