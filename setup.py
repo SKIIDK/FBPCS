@@ -12,6 +12,8 @@ install_requires = [
     "dataclasses-json==0.5.2",
     "pyyaml==5.4.1",
     "tqdm==4.55.1",
+    "docopt==0.6.2",
+    "schema==0.7",
 ]
 
 with open("README.md", encoding="utf-8") as f:
