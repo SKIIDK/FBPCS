@@ -19,8 +19,7 @@ jobs:
           python -m pip install pyre-check-nightly==$VERSION
           python -m pip show docopt
           python -m pip show schema
-          python -m pip show psutil
-          python -m pip show fbpcs dataclasses_json botocore boto3  
+          python onedocker/onedocker_runner.py private_lift/lift --cmd="cmd"
       - name: Run Pyre
         run: |
           pyre check
