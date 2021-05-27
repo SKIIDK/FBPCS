@@ -29,6 +29,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
+      - uses: syphar/restore-virtualenv@v1
+        id: cache-virtualenv
       - name: Run Pyre
         run: |
           pyre check
