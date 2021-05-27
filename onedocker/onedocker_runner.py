@@ -33,7 +33,7 @@ import psutil
 from easydict import EasyDict as edict
 import schema
 from docopt import docopt
-from .env import ONEDOCKER_EXE_PATH, ONEDOCKER_REPOSITORY_PATH
+from env import ONEDOCKER_EXE_PATH, ONEDOCKER_REPOSITORY_PATH
 from fbpcs.service.storage_s3 import S3StorageService
 from fbpcs.util.s3path import S3Path
 
