@@ -1,29 +1,39 @@
 name: pyre
 
 on:
-  [push, pull_request]
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
 jobs:
+  create-virtualenv:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v1
+    - uses: syphar/restore-virtualenv@v1
+      id: cache-virtualenv
+
+    - uses: syphar/restore-pip-download-cache@v1
+      if: steps.cache-virtualenv.outputs.cache-hit != 'true'
+    - name: Install Dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        python3 -m pip install .
+        VERSION=$(grep "version" .pyre_configuration | sed -n -e 's/.*\(0\.0\.[0-9]*\).*/\1/p')
+        python3 -m pip install pyre-check-nightly==$VERSION
+
+      
   pyre:
+    needs: create-virtualenv
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
-      
-      - uses: syphar/restore-virtualenv@v1
-        id: cache-virtualenv
-        with:
-          requirement_files: pyre_requirements.txt  
-
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install .
-          VERSION=$(grep "version" .pyre_configuration | sed -n -e 's/.*\(0\.0\.[0-9]*\).*/\1/p')
-          python -m pip install pyre-check-nightly==$VERSION
-          python -m pip show docopt
-          python -m pip show schema
-          python onedocker/onedocker_runner.py private_lift/lift --cmd="cmd"
       - name: Run Pyre
         run: |
           pyre check
