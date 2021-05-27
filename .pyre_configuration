@@ -1,39 +1,4 @@
 {
-  "search_path": [
-    {
-      "site-package": "dataclasses_json"
-    },
-    {
-      "site-package": "botocore"
-    },
-    {
-      "site-package": "boto3"
-    },
-    {
-      "site-package": "tqdm"
-    },
-    {
-      "site-package": "pyyaml"
-    },
-    {
-      "site-package": "fbpcs"
-    },
-    {
-      "site-package": "psutil"
-    },
-    {
-      "site-package": "easydict"
-    },
-    {
-      "site-package": "setuptools"
-    },
-    {
-      "site-package": "docopt"
-    },
-    {
-      "site-package": "schema"
-    }
-  ],
   "source_directories": [
     ".",
     "fbpcs"
