@@ -7,8 +7,11 @@
 
 """
 CLI for running an executable in one docker
+
+
 Usage:
     onedocker-runner <package_name> --cmd=<cmd> [options]
+
 Options:
     -h --help                           Show this help
     --repository_path=<repository_path> The folder repository that the executables are to downloaded from
@@ -26,13 +29,14 @@ import sys
 from pathlib import Path
 from typing import Tuple, Any, Optional
 
-from fbpcs.service.storage_s3 import S3StorageService
-from fbpcs.util.s3path import S3Path
 import psutil
+import boto3
+import botocore
 import schema
 from docopt import docopt
-
-from .env import ONEDOCKER_EXE_PATH, ONEDOCKER_REPOSITORY_PATH
+from env import ONEDOCKER_EXE_PATH, ONEDOCKER_REPOSITORY_PATH
+from fbpcs.service.storage_s3 import S3StorageService
+from fbpcs.util.s3path import S3Path
 
 
 # the folder on s3 that the executables are to downloaded from
@@ -133,3 +137,63 @@ def _read_config(
     logger.info(f"Read {config_name} from default value...")
     return default_val
 
+
+def main():
+    s = schema.Schema(
+        {
+            "<package_name>": str,
+            "--cmd": schema.Or(None, str),
+            "--repository_path": schema.Or(None, schema.And(str, len)),
+            "--exe_path": schema.Or(None, schema.And(str, len)),
+            "--timeout": schema.Or(None, schema.Use(int)),
+            "--log_path": schema.Or(None, schema.Use(Path)),
+            "--verbose": bool,
+            "--help": bool,
+        }
+    )
+
+    arguments = s.validate(docopt(__doc__))
+
+    log_path = arguments["--log_path"]
+    log_level = logging.DEBUG if arguments["--verbose"] else logging.INFO
+    logging.basicConfig(filename=log_path, level=log_level)
+    logger = logging.getLogger(__name__)
+
+    # timeout could be None if the caller did not provide the value
+    timeout = arguments["--timeout"]
+
+    repository_path = _read_config(
+        logger,
+        "repository_path",
+        arguments["--repository_path"],
+        ONEDOCKER_REPOSITORY_PATH,
+        DEFAULT_REPOSITORY_PATH,
+    )
+    exe_path = _read_config(
+        logger,
+        "exe_path",
+        arguments["--exe_path"],
+        ONEDOCKER_EXE_PATH,
+        DEFAULT_EXE_FOLDER,
+    )
+
+    logger.info("Starting program....")
+    try:
+        run(
+            repository_path=repository_path,
+            exe_path=exe_path,
+            package_name=arguments["<package_name>"],
+            cmd=arguments["--cmd"],
+            logger=logger,
+            timeout=timeout,
+        )
+    except subprocess.TimeoutExpired:
+        logger.error(f"{timeout} seconds have passed. Now exiting the program....")
+        sys.exit(1)
+    except InterruptedError:
+        logger.error("Receive abort command from user, Now exiting the program....")
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
