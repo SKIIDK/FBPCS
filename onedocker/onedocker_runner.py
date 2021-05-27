@@ -30,8 +30,7 @@ from pathlib import Path
 from typing import Tuple, Any, Optional
 
 import psutil
-import boto3
-import botocore
+from easydict import EasyDict as edict
 import schema
 from docopt import docopt
 from .env import ONEDOCKER_EXE_PATH, ONEDOCKER_REPOSITORY_PATH
