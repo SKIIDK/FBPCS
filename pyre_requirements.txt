@@ -1,3 +1,5 @@
 psutil ~= 5.8
 setuptools ~= 51.0
 easydict
+docopt
+schema
