@@ -19,12 +19,6 @@
       "site-package": "fbpcs"
     },
     {
-      "site-package": "docopt"
-    },
-    {
-      "site-package": "schema"
-    },
-    {
       "site-package": "psutil"
     },
     {
@@ -32,6 +26,12 @@
     },
     {
       "site-package": "setuptools"
+    },
+    {
+      "site-package": "docopt"
+    },
+    {
+      "site-package": "schema"
     }
   ],
   "source_directories": [
